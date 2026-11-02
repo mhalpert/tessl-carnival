@@ -35,8 +35,6 @@ export interface HookADuckState {
   hook: Hook;
   casts: number;
   score: number;
-  /** The last duck caught, for the label beside the score. */
-  lastCatch: number | null;
   phase: 'playing' | 'over';
 }
 
@@ -51,7 +49,6 @@ export function createState(): HookADuckState {
     hook: { x: WIDTH / 2, y: ROD_Y, depth: ROD_Y, phase: 'ready' },
     casts: CASTS,
     score: 0,
-    lastCatch: null,
     phase: 'playing',
   };
 }
@@ -93,7 +90,6 @@ export function step(state: HookADuckState, dt: number): void {
       if (duck) {
         duck.hooked = true;
         state.score += duck.value;
-        state.lastCatch = duck.value;
       }
       hook.phase = 'raising';
     }

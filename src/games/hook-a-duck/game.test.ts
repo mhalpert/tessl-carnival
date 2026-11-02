@@ -59,7 +59,6 @@ describe('hook a duck', () => {
       step(state, 0.01);
     }
     expect(state.score).toBe(25);
-    expect(state.lastCatch).toBe(25);
     expect(state.ducks[0].hooked).toBe(true);
     finishCast(state);
     expect(state.ducks[0].hooked).toBe(false);
